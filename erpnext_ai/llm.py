@@ -5,13 +5,18 @@ import frappe
 from frappe import _
 
 
-def get_client():
-	"""Build an OpenAI client from AI Settings. Raises frappe.ValidationError if unconfigured."""
+def get_client(settings=None):
+	"""Build an OpenAI client from AI Settings. Raises frappe.ValidationError if unconfigured.
+
+	Accepts an optional in-memory `settings` doc (e.g. an unsaved AI Settings
+	form) so callers like "Test Connection" exercise the key the user just
+	typed rather than whatever is already persisted in the database.
+	"""
 	import openai
 
 	from erpnext_ai.erpnext_ai.doctype.ai_settings.ai_settings import get_cached_settings
 
-	settings = get_cached_settings()
+	settings = settings or get_cached_settings()
 	api_key = settings.get_password("api_key", raise_exception=False)
 	if not api_key:
 		frappe.throw(_("OpenAI API Key is not configured in AI Settings"))
@@ -31,7 +36,7 @@ def chat_completion(messages: list[dict], settings=None, with_usage: bool = Fals
 	from erpnext_ai.erpnext_ai.doctype.ai_settings.ai_settings import get_cached_settings
 
 	settings = settings or get_cached_settings()
-	client = get_client()
+	client = get_client(settings)
 
 	try:
 		response = client.chat.completions.create(
