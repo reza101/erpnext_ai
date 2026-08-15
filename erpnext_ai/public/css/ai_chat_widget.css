@@ -1,0 +1,112 @@
+.erpnext-ai-launcher {
+	position: fixed;
+	right: 24px;
+	bottom: 24px;
+	z-index: 1000;
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	border: none;
+	background: var(--primary, #2490ef);
+	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+	cursor: pointer;
+}
+
+.erpnext-ai-launcher:hover {
+	filter: brightness(1.08);
+}
+
+.erpnext-ai-panel {
+	position: fixed;
+	right: 24px;
+	bottom: 88px;
+	z-index: 1000;
+	width: 340px;
+	max-height: 460px;
+	background: var(--card-bg, #fff);
+	border: 1px solid var(--border-color, #d1d8dd);
+	border-radius: 10px;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.erpnext-ai-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 12px;
+	background: var(--primary, #2490ef);
+	color: white;
+	font-weight: 600;
+}
+
+.erpnext-ai-close {
+	background: none;
+	border: none;
+	color: white;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.erpnext-ai-messages {
+	flex: 1;
+	overflow-y: auto;
+	padding: 10px 12px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	min-height: 180px;
+}
+
+.erpnext-ai-msg {
+	padding: 6px 10px;
+	border-radius: 8px;
+	font-size: 12px;
+	max-width: 85%;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.erpnext-ai-msg-user {
+	align-self: flex-end;
+	background: var(--primary, #2490ef);
+	color: white;
+}
+
+.erpnext-ai-msg-assistant {
+	align-self: flex-start;
+	background: var(--bg-color, #f4f5f6);
+	color: var(--text-color, #1c2126);
+}
+
+.erpnext-ai-input-row {
+	display: flex;
+	gap: 6px;
+	padding: 8px;
+	border-top: 1px solid var(--border-color, #d1d8dd);
+}
+
+.erpnext-ai-input {
+	flex: 1;
+	resize: none;
+	border: 1px solid var(--border-color, #d1d8dd);
+	border-radius: 6px;
+	padding: 6px 8px;
+	font-size: 12px;
+}
+
+.erpnext-ai-send {
+	border: none;
+	border-radius: 6px;
+	background: var(--primary, #2490ef);
+	color: white;
+	padding: 0 12px;
+	cursor: pointer;
+}

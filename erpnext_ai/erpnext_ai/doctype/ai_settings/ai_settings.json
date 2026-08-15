@@ -1,0 +1,112 @@
+{
+    "actions": [],
+    "creation": "2026-08-15 00:00:00.000000",
+    "doctype": "DocType",
+    "engine": "InnoDB",
+    "field_order": [
+        "enabled",
+        "allowed_role",
+        "openai_section",
+        "api_key",
+        "model",
+        "column_break_openai",
+        "temperature",
+        "max_tokens",
+        "widget_section",
+        "enable_chat_widget",
+        "system_prompt"
+    ],
+    "fields": [
+        {
+            "default": "0",
+            "description": "Master switch. When off, the chat widget is hidden and the chat API rejects all requests.",
+            "fieldname": "enabled",
+            "fieldtype": "Check",
+            "label": "Enabled"
+        },
+        {
+            "default": "System Manager",
+            "description": "Only users holding this Role can use the AI assistant. Enforced server-side on every API call.",
+            "fieldname": "allowed_role",
+            "fieldtype": "Link",
+            "label": "Allowed Role",
+            "options": "Role",
+            "reqd": 1
+        },
+        {
+            "fieldname": "openai_section",
+            "fieldtype": "Section Break",
+            "label": "OpenAI Configuration"
+        },
+        {
+            "description": "Stored encrypted. Never exposed to the client.",
+            "fieldname": "api_key",
+            "fieldtype": "Password",
+            "label": "OpenAI API Key"
+        },
+        {
+            "default": "gpt-4o-mini",
+            "fieldname": "model",
+            "fieldtype": "Data",
+            "label": "Model"
+        },
+        {
+            "fieldname": "column_break_openai",
+            "fieldtype": "Column Break"
+        },
+        {
+            "default": "0.3",
+            "fieldname": "temperature",
+            "fieldtype": "Float",
+            "label": "Temperature",
+            "precision": "2"
+        },
+        {
+            "default": "1024",
+            "fieldname": "max_tokens",
+            "fieldtype": "Int",
+            "label": "Max Tokens"
+        },
+        {
+            "fieldname": "widget_section",
+            "fieldtype": "Section Break",
+            "label": "Chat Widget"
+        },
+        {
+            "default": "1",
+            "description": "Show a floating chat button on the Desk for users holding the Allowed Role.",
+            "fieldname": "enable_chat_widget",
+            "fieldtype": "Check",
+            "label": "Enable Floating Chat Widget"
+        },
+        {
+            "default": "You are an assistant embedded in an ERPNext system. Answer concisely and only use information the user would be authorized to see.",
+            "fieldname": "system_prompt",
+            "fieldtype": "Small Text",
+            "label": "System Prompt"
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "issingle": 1,
+    "links": [],
+    "modified": "2026-08-15 00:00:00.000000",
+    "modified_by": "Administrator",
+    "module": "Erpnext AI",
+    "name": "AI Settings",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "email": 1,
+            "print": 1,
+            "read": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}
