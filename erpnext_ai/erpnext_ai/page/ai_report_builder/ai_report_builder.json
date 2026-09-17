@@ -1,0 +1,16 @@
+{
+ "content": null,
+ "docstatus": 0,
+ "doctype": "Page",
+ "idx": 0,
+ "module": "Erpnext AI",
+ "name": "ai-report-builder",
+ "owner": "Administrator",
+ "page_name": "ai-report-builder",
+ "roles": [],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "system_page": 0,
+ "title": "AI Report Builder"
+}

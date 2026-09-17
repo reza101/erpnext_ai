@@ -7,14 +7,18 @@
         "enabled",
         "allowed_role",
         "openai_section",
+        "provider",
         "api_key",
+        "ollama_base_url",
         "model",
         "column_break_openai",
         "temperature",
         "max_tokens",
         "widget_section",
         "enable_chat_widget",
-        "system_prompt"
+        "system_prompt",
+        "hr_section",
+        "hr_policy_document"
     ],
     "fields": [
         {
@@ -36,16 +40,36 @@
         {
             "fieldname": "openai_section",
             "fieldtype": "Section Break",
-            "label": "OpenAI Configuration"
+            "label": "Provider Configuration"
         },
         {
+            "default": "OpenAI",
+            "fieldname": "provider",
+            "fieldtype": "Select",
+            "label": "Provider",
+            "options": "OpenAI\nOllama",
+            "reqd": 1
+        },
+        {
+            "depends_on": "eval:doc.provider==\"OpenAI\"",
             "description": "Stored encrypted. Never exposed to the client.",
             "fieldname": "api_key",
             "fieldtype": "Password",
-            "label": "OpenAI API Key"
+            "label": "OpenAI API Key",
+            "mandatory_depends_on": "eval:doc.provider==\"OpenAI\""
+        },
+        {
+            "default": "http://localhost:11434",
+            "depends_on": "eval:doc.provider==\"Ollama\"",
+            "description": "Base URL of your Ollama server.",
+            "fieldname": "ollama_base_url",
+            "fieldtype": "Data",
+            "label": "Ollama Base URL",
+            "mandatory_depends_on": "eval:doc.provider==\"Ollama\""
         },
         {
             "default": "gpt-4o-mini",
+            "description": "e.g. gpt-4o-mini for OpenAI, llama3.1 for Ollama.",
             "fieldname": "model",
             "fieldtype": "Data",
             "label": "Model"
@@ -84,6 +108,17 @@
             "fieldname": "system_prompt",
             "fieldtype": "Small Text",
             "label": "System Prompt"
+        },
+        {
+            "fieldname": "hr_section",
+            "fieldtype": "Section Break",
+            "label": "HR Policy Assistant"
+        },
+        {
+            "description": "Optional. When set, its text is added as context for the chat assistant, but only for users holding the HR User or HR Manager role.",
+            "fieldname": "hr_policy_document",
+            "fieldtype": "Attach",
+            "label": "HR Policy Document (PDF/DOCX)"
         }
     ],
     "index_web_pages_for_search": 1,

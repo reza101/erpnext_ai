@@ -8,7 +8,12 @@ from frappe.model.document import Document
 
 class AISettings(Document):
 	def validate(self):
-		if self.enabled and not self.get_password("api_key", raise_exception=False):
+		if not self.enabled:
+			return
+		if self.provider == "Ollama":
+			if not self.ollama_base_url:
+				frappe.throw(_("Set an Ollama Base URL before enabling the AI assistant"))
+		elif not self.get_password("api_key", raise_exception=False):
 			frappe.throw(_("Set an OpenAI API Key before enabling the AI assistant"))
 
 	@frappe.whitelist()

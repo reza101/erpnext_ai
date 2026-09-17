@@ -8,7 +8,7 @@ frappe.ui.form.on("AI Settings", {
 				doc: frm.doc,
 				method: "test_connection",
 				freeze: true,
-				freeze_message: __("Contacting OpenAI..."),
+				freeze_message: __("Contacting {0}...", [frm.doc.provider || "OpenAI"]),
 			}).then((r) => {
 				if (r.message && r.message.reply) {
 					frappe.msgprint({

@@ -9,6 +9,10 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     "openai~=1.54.0",
+    "httpx<0.28",
+    "ollama~=0.6.0",
+    "pypdf",  # frappe core already pins an exact version; don't constrain it here
+    "python-docx~=1.1",
 ]
 
 [build-system]
